@@ -13,14 +13,17 @@
 #include <LiquidCrystal.h>
 
 
-#define TRIGGER_PIN_ENTER   12 // Arduino pin tied to trigger pin on ping sensor.
-#define ECHO_PIN_ENTER      11 // Arduino pin tied to echo pin on ping sensor.
-#define TRIGGER_PIN_LEAVE   10
-#define ECHO_PIN_LEAVE      9
-#define MAX_DISTANCE        10 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
-#define TRAP_DISTANCE       2000 // Distance between sensors in mm
+#define TRIGGER_PIN_ENTER   8 // Arduino pin tied to trigger pin on ping sensor.
+#define ECHO_PIN_ENTER      9 // Arduino pin tied to echo pin on ping sensor.
+#define TRIGGER_PIN_LEAVE   11
+#define ECHO_PIN_LEAVE      10
+#define MAX_DISTANCE        50 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
+#define TRAP_DISTANCE       10000 // Distance between sensors in mm
 #define READY_LED           13
 #define PAUSE_TIME          5000
+#define LED_RED              
+#define LED_GREEN
+#define LED_BLUE
 
 String title = "DBUK - Speed Test";
 
@@ -85,9 +88,6 @@ void loop() {
     lcd.setCursor(14,3);
     lcd.print("mph");
     delay(PAUSE_TIME);
-    Serial.println("Resetting");
-    resetScreen();
-    state = 0;
   }
   // Do other stuff here, really. Think of it as multi-tasking.
 }
@@ -125,4 +125,5 @@ void resetScreen() {
     lcd.print(title);
     lcd.setCursor(0,1);
     lcd.print("Ready...");
+    Serial.println("Screen Reset");
 }
